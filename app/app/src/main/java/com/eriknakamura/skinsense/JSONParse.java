@@ -9,6 +9,8 @@ import org.json.JSONObject;
 public class JSONParse{
     public static String dis;
     public static double conf;
+    public static HashMap<String, Double> finalMap;
+
 
     public static void mainletsgo(String a, String b, String c, String d) throws JSONException {
 
@@ -62,7 +64,7 @@ public class JSONParse{
         System.out.println("uber 2" + valueMapUber2);
         System.out.println("uber 3" + valueMapUber3);
 
-        HashMap<String, Double> finalMap = new HashMap<>();
+        finalMap = new HashMap<String, Double>();
         finalMap = applyUberLayers(valueMap, valueMapUber1, valueMapUber2, valueMapUber3);
         List<String> finalMapKeys = new ArrayList(finalMap.keySet());
         double largest = 0;
@@ -121,5 +123,27 @@ public class JSONParse{
         }
 
         return main;
+    }
+
+    public static void accountWeighted(double[] weightedSymptoms){
+        List<String> hashKeys = new ArrayList<String>(finalMap.keySet());
+        for(int i=0;i<hashKeys.size();i++){
+            String keyVal = hashKeys.get(i);
+            finalMap.put(keyVal,finalMap.get(hashKeys.get(i))*.60 + weightedSymptoms[i]);
+        }
+
+        List<String> finalMapKeys = new ArrayList(finalMap.keySet());
+        double largest = 0;
+        String mapkey = "hello";
+        for(int i=0;i<finalMapKeys.size();i++){
+            double hashSize = finalMap.get(finalMapKeys.get(i));
+            if(hashSize>largest){
+                largest = hashSize;
+                mapkey = finalMapKeys.get(i);
+            }
+        }
+        conf = largest;
+        dis = mapkey;
+
     }
 }

@@ -216,27 +216,6 @@ public class CameraActivity extends AppCompatActivity {
         imageView.setImageBitmap(bmImg);
     }
 
-
-    /*Call post(Callback callback) throws IOException {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);
-        bmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
-        byte[] byteArray = stream.toByteArray();
-        RequestBody formBody = RequestBody
-                .create(MediaType.parse("application/octet-stream"), byteArray);
-
-        Request request = new Request.Builder()
-                .addHeader("Prediction-Key", "c6b9366855dc483c96321e1d7525348f")
-                .addHeader("Content-Type",  "application/octet-stream")
-                .url("https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/753a5e39-044d-424d-b876-4cda8f679571/image?iterationId=2fee4e9a-0c3d-41f7-b43b-3eb6d3c1d011")
-                .post(formBody)
-                .build();
-        Call call = client.newCall(request);
-        call.enqueue(callback);
-
-        return call;
-    }*/
-
     Call post(Callback callback, String url) throws IOException {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);

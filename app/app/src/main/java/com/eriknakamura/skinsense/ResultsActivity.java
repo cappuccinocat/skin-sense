@@ -40,8 +40,10 @@ public class ResultsActivity extends AppCompatActivity {
             l2[i] = l1[i] ? 1 : 0;
         }
 
-        System.out.println(sa.probability(l2));
-        
+        double[] weightSymptoms = sa.probability(l2);
+        for(int i = 0; i < weightSymptoms.length; i++){
+            weightSymptoms[i] = 0.4*weightSymptoms[i];
+        }
 
         a = Results.e;
         b = Results.f;
@@ -55,6 +57,8 @@ public class ResultsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        JSONParse.accountWeighted(weightSymptoms);
 
         dis = JSONParse.dis;
         conf = Double.toString(JSONParse.conf);
