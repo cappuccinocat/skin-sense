@@ -31,6 +31,11 @@ public class RashSymptom extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), DrynessSymptom.class);
             intent.putExtra("rashy", rashy.isChecked());
             intent.putExtra("rashn", rashn.isChecked());
+            intent.putExtra("a", intent.getStringExtra("a"));
+            intent.putExtra("b", intent.getStringExtra("b"));
+            intent.putExtra("c", intent.getStringExtra("c"));
+            intent.putExtra("d", intent.getStringExtra("d"));
+            System.out.println("rashes" + intent.getStringExtra("a") + intent.getStringExtra("b") + intent.getStringExtra("c") + intent.getStringExtra("d"));
             startActivity(intent);
         }
     };

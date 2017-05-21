@@ -31,6 +31,10 @@ public class StiffSymptom extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ItchSymptom.class);
             intent.putExtra("stiffy", stiffy.isChecked());
             intent.putExtra("stiffn", stiffn.isChecked());
+            intent.putExtra("a", intent.getStringExtra("a"));
+            intent.putExtra("b", intent.getStringExtra("b"));
+            intent.putExtra("c", intent.getStringExtra("c"));
+            intent.putExtra("d", intent.getStringExtra("d"));
             startActivity(intent);
         }
     };

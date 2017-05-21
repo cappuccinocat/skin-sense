@@ -31,6 +31,10 @@ public class PainSymptom extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), AutoSymptom.class);
             intent.putExtra("painy", painy.isChecked());
             intent.putExtra("painn", painn.isChecked());
+            intent.putExtra("a", intent.getStringExtra("a"));
+            intent.putExtra("b", intent.getStringExtra("b"));
+            intent.putExtra("c", intent.getStringExtra("c"));
+            intent.putExtra("d", intent.getStringExtra("d"));
             startActivity(intent);
         }
     };

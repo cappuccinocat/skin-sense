@@ -138,6 +138,7 @@ public class CameraActivity extends AppCompatActivity {
                         public void onResponse(Call call, Response response) throws IOException {
                             if (response.isSuccessful()) {
                                 String responseStr = response.body().string();
+
                                 result4 = responseStr;
                                 System.out.println(result4);
                             } else {
@@ -161,12 +162,17 @@ public class CameraActivity extends AppCompatActivity {
 
         submitInfo = (Button) findViewById(R.id.submit_button);
         submitInfo.setOnClickListener(new View.OnClickListener() {
-            Intent intent = new Intent(CameraActivity.this, RashSymptom.class);
-
 
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(CameraActivity.this, RashSymptom.class);
                 intent.putExtra("stringPath", currentPhotoPath);
+                System.out.println("results" + result1 + result2 + result3 + result4);
+                intent.putExtra("a", result1);
+                intent.putExtra("b", result2);
+                intent.putExtra("c", result3);
+                intent.putExtra("d", result4);
+                Results.set(result1, result2, result3, result4);
                 startActivity(intent);
             }
         });
@@ -234,7 +240,7 @@ public class CameraActivity extends AppCompatActivity {
     Call post(Callback callback, String url) throws IOException {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);
-        bmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+        bmap.compress(Bitmap.CompressFormat.JPEG, 30, stream);
         byte[] byteArray = stream.toByteArray();
         RequestBody formBody = RequestBody
                 .create(MediaType.parse("application/octet-stream"), byteArray);
@@ -249,21 +255,5 @@ public class CameraActivity extends AppCompatActivity {
         call.enqueue(callback);
 
         return call;
-    }
-
-    public String result1(){
-        return this.result1;
-    }
-
-    public String result2(){
-        return this.result2;
-    }
-
-    public String result3(){
-        return this.result3;
-    }
-
-    public String result4(){
-        return this.result4;
     }
 }

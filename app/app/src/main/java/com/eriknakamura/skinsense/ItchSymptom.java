@@ -31,6 +31,10 @@ public class ItchSymptom extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PainSymptom.class);
             intent.putExtra("itchy", itchy.isChecked());
             intent.putExtra("itchn", itchn.isChecked());
+            intent.putExtra("a", intent.getStringExtra("a"));
+            intent.putExtra("b", intent.getStringExtra("b"));
+            intent.putExtra("c", intent.getStringExtra("c"));
+            intent.putExtra("d", intent.getStringExtra("d"));
             startActivity(intent);
         }
     };

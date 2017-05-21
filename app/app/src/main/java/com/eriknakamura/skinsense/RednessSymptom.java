@@ -31,6 +31,10 @@ public class RednessSymptom extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), StiffSymptom.class);
             intent.putExtra("redy", redy.isChecked());
             intent.putExtra("redn", redn.isChecked());
+            intent.putExtra("a", intent.getStringExtra("a"));
+            intent.putExtra("b", intent.getStringExtra("b"));
+            intent.putExtra("c", intent.getStringExtra("c"));
+            intent.putExtra("d", intent.getStringExtra("d"));
             startActivity(intent);
         }
     };

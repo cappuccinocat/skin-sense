@@ -10,4 +10,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.eriknakamura.skinsense.ResultsActivity">
 
+    <TextView
+        android:text="Your result: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp"
+        android:id="@+id/textView2"
+        android:textSize="36sp" />
+
+    <TextView
+        android:text="This is not a medical diagnosis. SkinSense is a diagnostics tool. Please see a physician/dermatologist if you are concerned."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Disease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/disease"
+        android:textSize="30sp"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:text="%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"
+        android:layout_marginStart="19dp"
+        android:id="@+id/confidence" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Confidence:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
