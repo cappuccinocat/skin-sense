@@ -25,7 +25,6 @@ public class ResultsActivity extends AppCompatActivity {
             l2[i] = l1[i] ? 1 : 0;
         }
 
-        System.out.println("!!!!!!!!!OOOOOVOVVVEERRRRHEHRHEHREHRERHRREHLAFLJDF:LJSDLFJSL:FJ:LDF");
         System.out.println(sa.probability(l2));
 
         super.onCreate(savedInstanceState);
