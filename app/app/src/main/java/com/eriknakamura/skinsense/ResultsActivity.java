@@ -9,7 +9,6 @@ public class ResultsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
     }

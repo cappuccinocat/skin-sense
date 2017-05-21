@@ -11,11 +11,10 @@
         <activity android:name=".CameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".ResultsActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -26,6 +25,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
+
+        <activity android:name=".RashSymptom" />
+        <activity android:name=".AutoSymptom" />
+        <activity android:name=".BumpsSymptom" />
+        <activity android:name=".DrynessSymptom" />
+        <activity android:name=".ItchSymptom" />
+        <activity android:name=".PainSymptom" />
+        <activity android:name=".RednessSymptom" />
+        <activity android:name=".StiffSymptom" />
     </application>
 
 </manifest>
