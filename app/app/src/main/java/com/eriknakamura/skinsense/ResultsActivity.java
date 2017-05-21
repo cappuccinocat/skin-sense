@@ -41,6 +41,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         System.out.println(sa.probability(l2));
+        
 
         a = Results.e;
         b = Results.f;
@@ -55,6 +56,8 @@ public class ResultsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        dis = JSONParse.dis;
+        conf = Double.toString(JSONParse.conf);
         //add calculations for dis and conf here
 
         if(dis.equals("Ringworm")){

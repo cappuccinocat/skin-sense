@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class JSONParse{
     public static String dis;
-    public static String conf;
+    public static double conf;
 
     public static void mainletsgo(String a, String b, String c, String d) throws JSONException {
 
@@ -64,6 +64,18 @@ public class JSONParse{
 
         HashMap<String, Double> finalMap = new HashMap<>();
         finalMap = applyUberLayers(valueMap, valueMapUber1, valueMapUber2, valueMapUber3);
+        List<String> finalMapKeys = new ArrayList(finalMap.keySet());
+        double largest = 0;
+        String mapkey = "hello";
+        for(int i=0;i<finalMapKeys.size();i++){
+            double hashSize = finalMap.get(finalMapKeys.get(i));
+            if(hashSize>largest){
+                largest = hashSize;
+                mapkey = finalMapKeys.get(i);
+            }
+        }
+        conf = largest;
+        dis = mapkey;
 
         System.out.println("final" + finalMap);
 

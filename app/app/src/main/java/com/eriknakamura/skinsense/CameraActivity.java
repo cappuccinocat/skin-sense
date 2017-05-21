@@ -240,7 +240,7 @@ public class CameraActivity extends AppCompatActivity {
     Call post(Callback callback, String url) throws IOException {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);
-        bmap.compress(Bitmap.CompressFormat.JPEG, 30, stream);
+        bmap.compress(Bitmap.CompressFormat.JPEG, 45, stream);
         byte[] byteArray = stream.toByteArray();
         RequestBody formBody = RequestBody
                 .create(MediaType.parse("application/octet-stream"), byteArray);
