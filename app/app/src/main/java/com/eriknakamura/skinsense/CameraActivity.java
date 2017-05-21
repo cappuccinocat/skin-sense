@@ -40,6 +40,11 @@ public class CameraActivity extends AppCompatActivity {
     static String currentPhotoPath;
     OkHttpClient client = new OkHttpClient();
 
+    String urlkey1 = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/753a5e39-044d-424d-b876-4cda8f679571/image?iterationId=10bdf036-2a78-4fc3-8fcb-cd78022fa198";
+    String urlkey2 = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/6816f56b-c6c8-4286-adb8-4bf3b704a86d/image?iterationId=22701ec9-7cad-4df8-a468-5b75db005829";
+    String urlkey3 = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/a3a9dd7c-4178-481c-ba66-32a14924f67c/image?iterationId=1956ee3a-19db-49d6-a6ee-76d7860d11f4";
+    String urlkey4 = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/abb2f1cc-9c3f-4b4c-8239-642b5467e9fc/image?iterationId=ec73ccb4-ec75-4645-8aee-698fb23c5c78";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,6 +57,25 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setThumbnail(currentPhotoPath);
+                try {
+                    post(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            if (response.isSuccessful()) {
+                                String responseStr = response.body().string();
+                                System.out.println(responseStr);
+                            } else {
+                            }
+                        }
+                    }, urlkey1);
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+
                 try {
                     post(new Callback() {
                         @Override
@@ -74,7 +98,45 @@ public class CameraActivity extends AppCompatActivity {
                                 System.out.println("we failed");
                             }
                         }
-                    });
+                    }, urlkey2);
+
+                    try {
+                        post(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                if (response.isSuccessful()) {
+                                    String responseStr = response.body().string();
+                                    System.out.println(responseStr);
+                                } else {
+                                }
+                            }
+                        }, urlkey3);
+
+                        try {
+                            post(new Callback() {
+                                @Override
+                                public void onFailure(Call call, IOException e) {
+                                }
+
+                                @Override
+                                public void onResponse(Call call, Response response) throws IOException {
+                                    if (response.isSuccessful()) {
+                                        String responseStr = response.body().string();
+                                        System.out.println(responseStr);
+                                    } else {
+                                    }
+                                }
+                            }, urlkey4);
+                        } catch (IOException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
@@ -140,7 +202,8 @@ public class CameraActivity extends AppCompatActivity {
         imageView.setImageBitmap(bmImg);
     }
 
-    Call post(Callback callback) throws IOException {
+
+    /*Call post(Callback callback) throws IOException {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);
         bmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
@@ -152,6 +215,26 @@ public class CameraActivity extends AppCompatActivity {
                 .addHeader("Prediction-Key", "c6b9366855dc483c96321e1d7525348f")
                 .addHeader("Content-Type",  "application/octet-stream")
                 .url("https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/753a5e39-044d-424d-b876-4cda8f679571/image?iterationId=2fee4e9a-0c3d-41f7-b43b-3eb6d3c1d011")
+                .post(formBody)
+                .build();
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+
+        return call;
+    }*/
+
+    Call post(Callback callback, String url) throws IOException {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        Bitmap bmap = BitmapFactory.decodeFile(currentPhotoPath);
+        bmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+        byte[] byteArray = stream.toByteArray();
+        RequestBody formBody = RequestBody
+                .create(MediaType.parse("application/octet-stream"), byteArray);
+
+        Request request = new Request.Builder()
+                .addHeader("Prediction-Key", "c6b9366855dc483c96321e1d7525348f")
+                .addHeader("Content-Type",  "application/octet-stream")
+                .url(url)
                 .post(formBody)
                 .build();
         Call call = client.newCall(request);

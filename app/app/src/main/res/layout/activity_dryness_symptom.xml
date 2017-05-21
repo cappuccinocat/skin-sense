@@ -11,29 +11,30 @@
     tools:context="com.eriknakamura.skinsense.RashSymptom">
 
     <TextView
-        android:text="Does your skin lesion feel abornmal dryness?"
+        android:text="Does your skin lesion feel abnormal dryness?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="184dp"
-        android:id="@+id/textView" />
-
-    <CheckBox
-        android:text="Yes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/dryy"
-        android:onClick="onCheckboxClicked"/>
+        android:id="@+id/textView"
+        android:textSize="18sp" />
 
     <CheckBox
         android:text="No"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dryn"
-        android:layout_below="@id/dryy"
-        android:layout_alignStart="@id/dryy"
-        android:onClick="onCheckboxClicked"/>
+        android:onClick="onCheckboxClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:text="Yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dryy"
+        android:onClick="onCheckboxClicked"
+        android:layout_above="@+id/dryn"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
