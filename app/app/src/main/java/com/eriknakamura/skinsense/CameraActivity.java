@@ -26,15 +26,12 @@ public class CameraActivity extends AppCompatActivity {
     Button submitInfo;
     Button takePicture;
     String currentPhotoPath;
-    Handler handler;
-    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         imageView = (ImageView) findViewById(R.id.imageView);
-        handler = new Handler();
 
         takePicture = (Button) findViewById(R.id.picture_button);
         takePicture.setOnClickListener(new View.OnClickListener() {

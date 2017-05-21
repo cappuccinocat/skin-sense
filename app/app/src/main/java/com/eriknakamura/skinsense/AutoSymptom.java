@@ -22,7 +22,7 @@ public class AutoSymptom extends AppCompatActivity {
     }
 
     public void onCheckboxClicked(View view){
-        handler.postDelayed(changeSymptom, 500);
+        handler.postDelayed(changeSymptom, 400);
     }
 
     private Runnable changeSymptom = new Runnable() {
